@@ -70,8 +70,8 @@ EOF
     URL="hy2://$PASSWORD@$DOMAIN:443?obfs=salamander&obfs-password=$SALAMANDER_PASS#$DOMAIN"
 else
     if [ "$MASQUERADE_TYPE" == "file" ]; then
-        sudo mkdir -p /www/hysteria_easy
-        cat <<'HTML_EOF' | sudo tee /www/hysteria_easy/index.html > /dev/null
+        sudo install -d -m 755 /var/www/hysteria_easy
+        cat <<'HTML_EOF' | sudo tee /var/www/hysteria_easy/index.html > /dev/null
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -126,7 +126,7 @@ HTML_EOF
 masquerade:
   type: file
   file:
-    dir: /www/hysteria_easy
+    dir: /var/www/hysteria_easy
   listenHTTPS: :443
   forceHTTPS: true
 EOF
