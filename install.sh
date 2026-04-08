@@ -1,4 +1,6 @@
 #!/bin/bash
+
+
 SALAMANDER_PASS=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 25)
 PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 25)
 
@@ -125,6 +127,8 @@ masquerade:
   type: file
   file:
     dir: /www/hysteria_easy
+  listenHTTPS: :443
+  forceHTTPS: true
 EOF
     else
         cat <<EOF | sudo tee -a $CONFIG_FILE > /dev/null
